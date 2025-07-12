@@ -8,5 +8,15 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('passwordGenerator');
+password="";
+
+onButtonClick(){
+this.password="MY password";
+}
+
+getPassword(){
+  return this.password;
+}
+
+
 }
