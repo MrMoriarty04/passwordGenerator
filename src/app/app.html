@@ -1,37 +1,68 @@
-<h1 class="page-header">Password Generator</h1>
+<div class="container mt-5" style="max-width: 500px">
+  <h1 class="text-center mb-4">🔑 Password Generator</h1>
 
-<div>
-  <label for="pass-length">Length</label>
-  <input (input)="onChangeLength($event)" />
-</div>
+  <div class="mb-3">
+    <label for="pass-length" class="form-label">Length</label>
+    <input
+      id="pass-length"
+      type="number"
+      class="form-control"
+      (input)="onChangeLength($event)"
+    />
+  </div>
 
-<div>
-  <input (change)="onChangeUseLetters()" type="checkbox" />
-  <label>Use Letters</label>
-</div>
+  <div class="form-check mb-2">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="letters"
+      (change)="onChangeUseLetters()"
+    />
+    <label class="form-check-label" for="letters">Use Letters</label>
+  </div>
 
-<div>
-  <input (change)="onChangeUseNumbers()" type="checkbox" />
-  <label>Use Numbers</label>
-</div>
+  <div class="form-check mb-2">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="numbers"
+      (change)="onChangeUseNumbers()"
+    />
+    <label class="form-check-label" for="numbers">Use Numbers</label>
+  </div>
 
-<div>
-  <input (change)="onChangeUseSymbols()" type="checkbox" />
-  <label>Use Symbols</label>
-</div>
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="symbols"
+      (change)="onChangeUseSymbols()"
+    />
+    <label class="form-check-label" for="symbols">Use Symbols</label>
+  </div>
 
-<div>
-  <button
-    (click)="onButtonClick()"
-    [disabled]="
-      !(length && (includeLetters || includeNumbers || includeSymbols))
-    "
-  >
-    Generate!
-  </button>
-</div>
+  <div class="d-grid mb-4">
+    <button
+      class="btn btn-primary"
+      (click)="onButtonClick()"
+      [disabled]="
+        !(length && (includeLetters || includeNumbers || includeSymbols))
+      "
+    >
+      Generate!
+    </button>
+  </div>
 
-<div>
-  <label for="pass-result">Your Password</label>
-  <input [value]="password" />
+  @if(password){
+  <div class="box">
+    <label for="pass-result" class="form-label">Your Password</label>
+    <input
+      id="pass-result"
+      type="text"
+      class="form-control"
+      [value]="password"
+      readonly
+    />
+  </div>
+  }
 </div>
